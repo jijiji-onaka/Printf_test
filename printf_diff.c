@@ -122,13 +122,21 @@ int main(int argc, char *argv[])
 		ft_printf("\n");
 		ft_printf("%d\n", rc2);
 		//
-		printf("%%-10.7*d, 3, 100\n");
-		rc = printf("%-10.7*d", 2, 100);
+		printf("%%-10.7*d, 2, 100\n");
+		rc = printf("[%-10.7*d]", 2, 100);
 		printf("\n");
-		printf("%d\n", rc);
-		rc2 = ft_printf("%-10.7*d", 3, 100);
+		printf("%d\n", rc - 2);
+		rc2 = ft_printf("[%-10.7*d]", 2, 100);
 		ft_printf("\n");
-		ft_printf("%d\n", rc2);
+		ft_printf("%d\n", rc2 - 2);
+		//
+		printf("%%-10.7d, 100\n");
+		rc = printf("[%-10.7d]", 100);
+		printf("\n");
+		printf("%d\n", rc - 2);
+		rc2 = ft_printf("[%-10.7d]", 100);
+		ft_printf("\n");
+		ft_printf("%d\n", rc2 - 2);
 	}
 	else if (arg == 'c')
 	{
