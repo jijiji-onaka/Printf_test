@@ -1,6 +1,6 @@
 # include <stdio.h>
 # include <string.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,11 +13,140 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 	arg = argv[1][0];
-	if (arg == 'c')
+	if (arg == 'E')
+	{
+		// Simple Conversion Management
+		puts("-----Simple Conversion Management-----");
+		printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
+		ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
+		printf("\n");
+		printf("%d %i %u %s %c %d\n", 42, 42, 42, "Tokyo", 'b');
+		ft_printf("%d %i %u %s %c %d\n", 42, 42, 42, "Tokyo", 'b');
+		printf("\n");
+		printf("%d %s [%s]\n", 0, (void *)0, "");
+		ft_printf("%d %s [%s]\n", 0, (void *)0, "");
+		printf("\n");
+		printf("check = %d %i %u %s %c %x %X %p = finish\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
+		ft_printf("check = %d %i %u %s %c %x %X %p = finish\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
+		printf("\n");
+		// Simple Flags Management
+		puts("-----Simple Flags Management-----");
+		printf("[%0s]\n","tokyo");
+		ft_printf("[%0s]\n", "tokyo");
+		printf("\n");
+		printf("[%10s]\n","tokyo");
+		ft_printf("[%10s]\n", "tokyo");
+		printf("\n");
+		printf("[%5s]\n","tokyo");
+		ft_printf("[%5s]\n", "tokyo");
+		printf("\n");
+		printf("[%3s]\n","tokyo");
+		ft_printf("[%3s]\n", "tokyo");
+		printf("\n");
+		// with '-'
+		puts("with '-'");
+		printf("[%-0s]\n","tokyo");
+		ft_printf("[%-0s]\n", "tokyo");
+		printf("\n");
+		printf("[%-10s]\n","tokyo");
+		ft_printf("[%-10s]\n", "tokyo");
+		printf("\n");
+		printf("[%-5s]\n","tokyo");
+		ft_printf("[%-5s]\n", "tokyo");
+		printf("\n");
+		printf("[%-3s]\n","tokyo");
+		ft_printf("[%-3s]\n", "tokyo");
+		printf("\n");
+		// with 0
+		puts("with '0'");
+		printf("[%00s]\n","tokyo");
+		ft_printf("[%00s]\n", "tokyo");
+		printf("\n");
+		printf("[%010s]\n","tokyo");
+		ft_printf("[%010s]\n", "tokyo");
+		printf("\n");
+		printf("[%05s]\n","tokyo");
+		ft_printf("[%05s]\n", "tokyo");
+		printf("\n");
+		printf("[%03s]\n","tokyo");
+		ft_printf("[%03s]\n", "tokyo");
+		printf("\n");
+		//with '.'
+		puts("with '.'");
+		printf("[%.0s]\n","tokyo");
+		ft_printf("[%.0s]\n", "tokyo");
+		printf("\n");
+		printf("[%.10s]\n","tokyo");
+		ft_printf("[%.10s]\n", "tokyo");
+		printf("\n");
+		printf("[%.5s]\n","tokyo");
+		ft_printf("[%.5s]\n", "tokyo");
+		printf("\n");
+		printf("[%.3s]\n","tokyo");
+		ft_printf("[%.3s]\n", "tokyo");
+		printf("\n");
+		// Advanced flags Management
+		puts("-----Advanced flags Management-----");
+		printf("[%*s]\n", 0, "tokyo");
+		ft_printf("[%*s]\n",0,  "tokyo");
+		printf("\n");
+		printf("[%*s]\n", 10, "tokyo");
+		ft_printf("[%*s]\n",  10, "tokyo");
+		printf("\n");
+		printf("[%*s]\n", -3, "tokyo");
+		ft_printf("[%*s]\n",  -3, "tokyo");
+		printf("\n");
+		printf("[%*s]\n", 3, "tokyo");
+		ft_printf("[%*s]\n",  3, "tokyo");
+		// precision
+		printf("\n");
+		printf("[%.*s]\n", 0, "tokyo");
+		ft_printf("[%.*s]\n",0,  "tokyo");
+		printf("\n");
+		printf("[%.*s]\n", 10, "tokyo");
+		ft_printf("[%.*s]\n",  10, "tokyo");
+		printf("\n");
+		printf("[%.*s]\n", -3, "tokyo");
+		ft_printf("[%.*s]\n",  -3, "tokyo");
+		printf("\n");
+		printf("[%.*s]\n", 3, "tokyo");
+		ft_printf("[%.*s]\n",  3, "tokyo");
+		printf("\n");
+		// Crazy Case
+		puts("-----Crazy Case-----");
+		printf("%%%%zzd%, 100\n");
+		rc = printf("%%%zzd%", 100);
+		printf("\n");
+		printf("%d\n", rc);
+		rc2 = ft_printf("%%%zzd%", 100);
+		ft_printf("\n");
+		ft_printf("%d\n", rc2);
+		//
+		printf("%%-10.7*d, 3, 100\n");
+		rc = printf("%-10.7*d", 2, 100);
+		printf("\n");
+		printf("%d\n", rc);
+		rc2 = ft_printf("%-10.7*d", 3, 100);
+		ft_printf("\n");
+		ft_printf("%d\n", rc2);
+	}
+	else if (arg == 'c')
 	{
 /*
 ** normal 'c'
 */
+		printf("%%-2.c, 'a'\n");
+		rc = printf("real : [%-2.c]\n", 'a');
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%-2.c]\n", 'a');
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%2.c, 'a'\n");
+		rc = printf("real : [%2.c]\n", 'a');
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%2.c]\n", 'a');
+		ft_printf("%d\n", rc2 - 10);
+		//
 		printf("%%c, 'a'\n");
 		rc = printf("real : [%c]\n", 'a');
 		printf("%d\n", rc - 10);
@@ -386,6 +515,24 @@ int main(int argc, char *argv[])
 	rc = printf("real : [%05.-3c]\n", 'a');
 	printf("%d\n", rc - 10);
 	rc2 = ft_printf("TEST : [%05.-3c]\n", 'a');
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%05.-3c '\\0'\n");
+	rc = printf("real : [%05.-3c]\n", '\0');
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%05.-3c]\n", '\0');
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%05.c '\\0'\n");
+	rc = printf("real : [%05.c]\n", '\0');
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%05.c]\n", '\0');
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%05.0c '\\0'\n");
+	rc = printf("real : [%05.0c]\n", '\0');
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%05.0c]\n", '\0');
 	ft_printf("%d\n", rc2 - 10);
 	//
 	}
@@ -2587,10 +2734,10 @@ int main(int argc, char *argv[])
 		rc2 = ft_printf("TEST : [%2X]\n", 1);
 		ft_printf("%d\n", rc2 - 10);
 		//
-		printf("%%2X, '123'\n");
-		rc = printf("real : [%2X]\n", 123);
+		printf("%%2X, '1234567'\n");
+		rc = printf("real : [%2X]\n", 1234567);
 		printf("%d\n", rc - 10);
-		rc2 = ft_printf("TEST : [%2X]\n", 123);
+		rc2 = ft_printf("TEST : [%2X]\n", 1234567);
 		ft_printf("%d\n", rc2 - 10);
 		//
 		printf("%%0X, '123'\n");
@@ -4323,6 +4470,598 @@ int main(int argc, char *argv[])
 	rc2 = ft_printf("TEST : [%#05.-3x]\n", 123456);
 	ft_printf("%d\n", rc2 -10);
 	//
+	printf("%%#.1x 0\n");
+	rc = printf("real : [%#.1x]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#.1x]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+		printf("%%#X, '1'\n");
+		rc = printf("real : [%#X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#1X, '1'\n");
+		rc = printf("real : [%#1X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#1X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#2X, '1'\n");
+		rc = printf("real : [%#2X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#2X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#2X, '123'\n");
+		rc = printf("real : [%#2X]\n", 123);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#2X]\n", 123);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#0X, '123'\n");
+		rc = printf("real : [%#0X]\n", 123);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#0X]\n", 123);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#X, -2147483648\n");
+		rc = printf("real : [%#X]\n", -2147483648);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#X]\n", -2147483648);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#X, 4294967295\n");
+		rc = printf("real : [%#X]\n", 4294967295);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#X]\n", 4294967295);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#X, 9223372036854775807\n");
+		rc = printf("real : [%#X]\n", 9223372036854775807);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#X]\n", 9223372036854775807);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#4X, -12345\n");
+		rc = printf("real : [%#4X]\n", -12345);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#4X]\n", -12345);
+		ft_printf("%d\n", rc2 - 10);
+		//-----------------------------------------------------------------------------------------------
+		// printf("%%-2c, 'a'\n");
+		// rc = printf("real : [%-2c]\n", 'a');
+		// printf("%d\n", rc - 10);
+		// rc2 = ft_printf("TEST : [%-2c]\n", 'a');
+		// ft_printf("%d\n", rc2 - 10); <- minus flag
+/*
+** precision 'd'
+*/
+		puts("P---------------------");
+		printf("%%#.X, 2\n");
+		rc = printf("real : [%#.X]\n", 2);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.X]\n", 2);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.0X, 2\n");
+		rc = printf("real : [%#.0X]\n", 2);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.0X]\n", 2);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.1X, 2\n");
+		rc = printf("real : [%#.1X]\n", 2);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.1X]\n", 2);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.3X, 2\n");
+		rc = printf("real : [%#.3X]\n", 2);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.3X]\n", 2);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.-1X, 2\n");
+		rc = printf("real : [%#.-1X]\n", 2);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.-1X]\n", 2);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.-2X, 12\n");
+		rc = printf("real : [%#.-2X]\n", 12);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.-2X]\n", 12);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.-3X, 12\n");
+		rc = printf("real : [%#.-3X]\n", 12);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.-3X]\n", 12);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.*X, -1, 0\n");
+		rc = printf("real : [%#.*X]\n", -1, 0);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.*X]\n", -1, 0);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.*X, -2, 12\n");
+		rc = printf("real : [%#.*X]\n", -2, 12);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.*X]\n", -2, 12);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.*X, -3, 1\n");
+		rc = printf("real : [%#.*X]\n", -3, 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.*X]\n", -3, 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.*X, 0, 1\n");
+		rc = printf("real : [%#.*X]\n", 0, 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.*X]\n", 0, 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.*X, 1, 2\n");
+		rc = printf("real : [%#.*X]\n", 1, 2);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.*X]\n", 1, 2);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.*X, 2, 123\n");
+		rc = printf("real : [%#.*X]\n", 2, 123);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.*X]\n", 2, 123);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#.*X, 2, 1\n");
+		rc = printf("real : [%#.*X]\n", 2, 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#.*X]\n", 2, 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+/*
+**　0 flag
+*/
+		printf("%%#0X 1\n");
+		rc = printf("real : [%#0X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#0X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#0X 0\n");
+		rc = printf("real : [%#0X]\n", 0);
+		printf("%d\n", rc -10);
+		rc2 = ft_printf("TEST : [%#0X]\n", 0);
+		ft_printf("%d\n", rc2 -10);
+		//
+		printf("%%#00X 1\n");
+		rc = printf("real : [%#00X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#00X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#00X 0\n");
+		rc = printf("real : [%#00X]\n", 0);
+		printf("%d\n", rc -10);
+		rc2 = ft_printf("TEST : [%#00X]\n", 0);
+		ft_printf("%d\n", rc2 -10);
+		//
+		printf("%%#01X 1\n");
+		rc = printf("real : [%#01X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#01X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#01X 12\n");
+		rc = printf("real : [%#01X]\n", 12);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#01X]\n", 12);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#03X 1\n");
+		rc = printf("real : [%#03X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#03X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#02X 1234\n");
+		rc = printf("real : [%#02X]\n", 1234);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#02X]\n", 1234);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#0-1X 1\n");
+		rc = printf("real : [%#0-1X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#0-1X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#0-0X 1\n");
+		rc = printf("real : [%#0-0X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#0-0X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#0-0X 0\n");
+		rc = printf("real : [%#0-0X]\n", 0);
+		printf("%d\n", rc -10);
+		rc2 = ft_printf("TEST : [%#0-0X]\n", 0);
+		ft_printf("%d\n", rc2 -10);
+		//
+		printf("%%#0-2X 1\n");
+		rc = printf("real : [%#0-2X]\n", 1);
+		printf("%d\n", rc - 10);
+		rc2 = ft_printf("TEST : [%#0-2X]\n", 1);
+		ft_printf("%d\n", rc2 - 10);
+		//
+		printf("%%#0-2X 1234\n");
+		rc = printf("real : [%#0-2X]\n", 1234);
+		printf("%d\n", rc -10);
+		rc2 = ft_printf("TEST : [%#0-2X]\n", 1234);
+		ft_printf("%d\n", rc2 -10);
+		//
+/*
+**	minus flag
+*/
+
+	printf("%%#-X 1\n");
+	rc = printf("real : [%#-X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-0X 1\n");
+	rc = printf("real : [%#-0X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-0X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-1X 1\n");
+	rc = printf("real : [%#-1X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-1X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-2X 1\n");
+	rc = printf("real : [%#-2X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-2X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-2X 1234\n");
+	rc = printf("real : [%#-2X]\n", 1234);
+	printf("%d\n", rc -10);
+	rc2 = ft_printf("TEST : [%#-2X]\n", 1234);
+	ft_printf("%d\n", rc2 -10);
+	//
+	printf("%%#--2X 1\n");
+	rc = printf("real : [%#--2X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#--2X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#--2X 1234\n");
+	rc = printf("real : [%#--2X]\n", 1234);
+	printf("%d\n", rc -10);
+	rc2 = ft_printf("TEST : [%#--2X]\n", 1234);
+	ft_printf("%d\n", rc2 -10);
+	//
+	printf("%%#-02X 1\n");
+	rc = printf("real : [%#-02X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-02X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-02X 1234\n");
+	rc = printf("real : [%#-02X]\n", 1234);
+	printf("%d\n", rc -10);
+	rc2 = ft_printf("TEST : [%#-02X]\n", 1234);
+	ft_printf("%d\n", rc2 -10);
+	//
+	printf("%%#-0102X -2147483648\n");
+	rc = printf("real : [%#-0102X]\n", -2147483648);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-0102X]\n", -2147483648);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-01-9X 1\n");
+	rc = printf("real : [%#-01-9X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-01-9X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-01-0X 0\n");
+	rc = printf("real : [%#-01-0X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-01-0X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-01-+3X 1\n");
+	rc = printf("real : [%#-01-+3X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-01-+3X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-01--2X 1234\n");
+	rc = printf("real : [%#-01--2X]\n", 1234);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-01--2X]\n", 1234);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05--X 1\n");
+	rc = printf("real : [%#05--X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05--X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05--4X 12\n");
+	rc = printf("real : [%#05--4X]\n", 12);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05--4X]\n", 12);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05--4X 12345\n");
+	rc = printf("real : [%#05--4X]\n", 12345);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05--4X]\n", 12345);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#5--4X 1\n");
+	rc = printf("real : [%#5--4X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#5--4X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#5--4X 0\n");
+	rc = printf("real : [%#5--4X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#5--4X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#5--4X 1\n");
+	rc = printf("real : [%#5--4X]\n",1);
+	printf("%d\n", rc -10);
+	rc2 = ft_printf("TEST : [%#5--4X]\n",1);
+	ft_printf("%d\n", rc2 -10);
+	//
+	printf("%%#-5.4X 12345\n");
+	rc = printf("real : [%#-5.4X]\n", 12345);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5.4X]\n", 12345);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5.4X 1\n");
+	rc = printf("real : [%#-5.4X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5.4X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5.4X 0\n");
+	rc = printf("real : [%#-5.4X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5.4X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	// printf("%%-5.4s abc\n");
+	// rc = printf("real : [%-5.4s]\n", "abc");
+	// printf("%d\n", rc - 10);
+	// rc2 = ft_printf("TEST : [%-5.4s]\n", "abc"); <--------'s'
+	// ft_printf("%d\n", rc2 - 10);
+	// //
+	// printf("%%-5.2s abc\n");
+	// rc = printf("real : [%-5.2s]\n", "abc");
+	// printf("%d\n", rc - 10);<----------------------------s
+	// rc2 = ft_printf("TEST : [%-5.2s]\n", "abc");
+	// ft_printf("%d\n", rc2 - 10);
+	// //
+	// printf("%%-5.4s abc\n");
+	// rc = printf("real : [%-5.4s]\n","abc");
+	// printf("%d\n", rc - 10);
+	// rc2 = ft_printf("TEST : [%-5.4s]\n", "abc");<---------------------------s
+	// ft_printf("%d\n", rc2 - 10);
+	// //
+	printf("%%#-5.0X 0\n");
+	rc = printf("real : [%#-5.0X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5.0X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5.0X 123456789\n");
+	rc = printf("real : [%#-5.0X]\n", 123456789);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5.0X]\n", 123456789);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5.0X -2\n");
+	rc = printf("real : [%#-5.0X]\n", -2);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5.0X]\n", -2);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5...0X 0\n");
+	rc = printf("real : [%#-5...0X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5...0X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5...0X 1\n");
+	rc = printf("real : [%#-5...0X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5...0X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5...0X 123456\n");
+	rc = printf("real : [%#-5...0X]\n", 123456);
+	printf("%d\n", rc -10);
+	rc2 = ft_printf("TEST : [%#-5...0X]\n", 123456);
+	ft_printf("%d\n", rc2 -10);
+	//
+	printf("%%#-5..2.9X 1\n");
+	rc = printf("real : [%#-5..2.9X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5..2.9X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5..2.0X 0\n");
+	rc = printf("real : [%#-5..2.0X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5..2.0X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5..2.0X 1\n");
+	rc = printf("real : [%#-5..2.0X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5..2.0X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5..2.4X 12345\n");
+	rc = printf("real : [%#-5..2.4X]\n", 12345);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5..2.4X]\n", 12345);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5..2.4X 1234567\n");
+	rc = printf("real : [%#-5..2.4X]\n", 1234567);
+	printf("%d\n", rc -10);
+	rc2 = ft_printf("TEST : [%#-5..2.4X]\n", 1234567);
+	ft_printf("%d\n", rc2 -10);
+	//
+	printf("%%#-5..2..X 1\n");
+	rc = printf("real : [%#-5..2..X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5..2..X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-5.2X 1\n");
+	rc = printf("real : [%#-5.2X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-5.2X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*.0X, 9 0\n");
+	rc = printf("real : [%#-*.0X]\n", 9, 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*.0X]\n", 9, 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*.0X, 9 1\n");
+	rc = printf("real : [%#-*.0X]\n", 9, 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*.0X]\n", 9, 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*3.0X, 9 1\n");
+	rc = printf("real : [%#-*3.0X]\n", 9, 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*3.0X]\n", 9, 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*9.0X, 3 0\n");
+	rc = printf("real : [%#-*9.0X]\n", 3, 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*9.0X]\n", 3, 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*9.0X, 3 1\n");
+	rc = printf("real : [%#-*9.0X]\n", 3, 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*9.0X]\n", 3, 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*9.2X, 3 0\n");
+	rc = printf("real : [%#-*9.2X]\n", 3, 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*9.2X]\n", 3, 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*.6X, 3 1234\n");
+	rc = printf("real : [%#-*.6X]\n", 3, 1234);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*.6X]\n", 3, 1234);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#-*.-6X, 3 1\n");
+	rc = printf("real : [%#-*.-6X]\n", 3, 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#-*.-6X]\n", 3, 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#*.-10X, 9 1\n");
+	rc = printf("real : [%#*.-10X]\n", 9 , 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#*.-10X]\n", 9 , 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05--1X 1\n");
+	rc = printf("real : [%#05--1X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05--1X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#5--0X 1\n");
+	rc = printf("real : [%#5--0X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#5--0X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#5--0X 0\n");
+	rc = printf("real : [%#5--0X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#5--0X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05.X 1\n");
+	rc = printf("real : [%#05.X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05.X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05.0X 0\n");
+	rc = printf("real : [%#05.0X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05.0X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05.1X 1\n");
+	rc = printf("real : [%#05.1X]\n", 12345);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05.1X]\n", 12345);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05.3X 123456\n");
+	rc = printf("real : [%#05.3X]\n", 123456);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05.3X]\n", 123456);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#03.5X 1\n");
+	rc = printf("real : [%#03.5X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#03.5X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05.-3X 1\n");
+	rc = printf("real : [%#05.-3X]\n", 1);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#05.-3X]\n", 1);
+	ft_printf("%d\n", rc2 - 10);
+	//
+	printf("%%#05.-3X 123456\n");
+	rc = printf("real : [%#05.-3X]\n", 123456);
+	printf("%d\n", rc -10);
+	rc2 = ft_printf("TEST : [%#05.-3X]\n", 123456);
+	ft_printf("%d\n", rc2 -10);
+	//
+	printf("%%#.1X 0\n");
+	rc = printf("real : [%#.1X]\n", 0);
+	printf("%d\n", rc - 10);
+	rc2 = ft_printf("TEST : [%#.1X]\n", 0);
+	ft_printf("%d\n", rc2 - 10);
+	//
 	}
 	//------------------------------------------------------------------------------------------
 	else if (arg == ' ')
@@ -4501,49 +5240,29 @@ int main(int argc, char *argv[])
 		rc2 = ft_printf("TEST : [%u]\n", 9223372036854775807);
 		ft_printf("%d\n", rc2 - 10);
 		//
+		printf("%%*d, -3, 100\n");
+		rc = printf("%1*d", -3, 100);
+		printf("\n");
+		printf("%d\n", rc);
+		rc2 = ft_printf("%1*d", -3, 100);
+		ft_printf("\n");
+		ft_printf("%d\n", rc2);
+		//
+		printf("%%%%zzd%, 100\n");
+		rc = printf("%%%zzd%", 100);
+		printf("\n");
+		printf("%d\n", rc);
+		rc2 = ft_printf("%%%zzd%", 100);
+		ft_printf("\n");
+		ft_printf("%d\n", rc2);
+		//
+		printf("%%-10.7*d, 3, 100\n");
+		rc = printf("%-10.7*d", 2, 100);
+		printf("\n");
+		printf("%d\n", rc);
+		rc2 = ft_printf("%-10.7*d", 3, 100);
+		ft_printf("\n");
+		ft_printf("%d\n", rc2);
 	}
-
-
-
-
-
-
-	// printf("%0.6s", "abc");
-	// printf("real : [%p]\n", 9223372036854775807);
-	// ft_printf("TEST : [%p]\n", 9223372036854775807);
-	// printf("real : [%p]\n", 18446744073709551615);
-	// ft_printf("TEST : [%p]\n", 18446744073709551615);
-	// printf("%d\n");
-	// ft_printf("%d\n");
-	//						   18446744073709551615
-	//							7fffffffffffffff
-	//							1234567890123456 ->16 (* 16) = 18446744073709551614
-	//		printf("%%s, \"abc\"\n");
-	//		rc = printf("%%%zzd%", 100);
-	//		printf("%d\n", rc);
-	//		rc2 = ft_printf("%%%zzd%", 100);
-	/*
-** 	面白ケース
-*/
-	//  int rc = printf("[%-10.0.c]\n", 'c');
-
-	// "%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c%-2c%-3c%-4c%-1c"
-	// ,' ','!','"','#','$','%','&','\'','(',')','*','+',',','-','.','/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~','')
-	static char *s_hidden = "hi low\0don't print me lol\0";
-// "%.*o", -3, 12345
-// "%.*o", -1, 12345
-// "%.*o", -1, 0
-// ("%.*", -1, x)
-	// int rc = 0;
-	// printf("[");
-	// rc = printf("%.*s", -3, 0);
-	// printf("]");
-	// printf("\n");
-	// // printf("%d\n", rc);
-	// ft_printf("[");
-	// rc = ft_printf("%.*s", -3, 0);
-	// ft_printf("]");
-	// printf("\n");
-	// printf("%d\n", rc);
 	return (0);
 }
