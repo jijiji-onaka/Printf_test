@@ -1,6 +1,6 @@
 # include <stdio.h>
 # include <string.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,153 +20,156 @@ int main(int argc, char *argv[])
 		puts("%d %i %u %s %c %x %X %p | 42, 42, 42, Tokyo, 'b', 42, 42, TOkyo");
 		rc = printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
 		rc = ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
-		printf("\n");
+
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
 		puts("%d %i %u %s %c %d | 42, 42, 42, Tokyo, 'b'");
 		rc = printf("%d %i %u %s %c %d\n", 42, 42, 42, "Tokyo", 'b');
 		rc2 = ft_printf("%d %i %u %s %c %d\n", 42, 42, 42, "Tokyo", 'b');
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
-		puts("%d %s [%s] | 0, (void *)0, \"\"");
+		printf("\n");
+		puts("%d %s [%s] | 0, (void *)0, [\"\"]");
 		rc = printf("%d %s [%s]\n", 0, (void *)0, "");
 		rc2 = ft_printf("%d %s [%s]\n", 0, (void *)0, "");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
 		puts("check = %d %i %u %s %c %x %X %p = finish |  42, 42, 42, Tokyo, 'b', 42, 42, TOkyo");
 		rc = printf("check = %d %i %u %s %c %x %X %p = finish\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
 		rc2 = ft_printf("check = %d %i %u %s %c %x %X %p = finish\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		// Simple Flags Management
 		puts("-----Simple Flags Management-----");
 		puts("[%0s] | tokyo");
 		rc = printf("[%0s]\n","tokyo");
 		rc2 = ft_printf("[%0s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
 		puts("[%10s] | tokyo");
 		rc = printf("[%10s]\n","tokyo");
 		rc2 = ft_printf("[%10s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%5s] | tokyo");
 		rc = printf("[%5s]\n","tokyo");
 		rc2 = ft_printf("[%5s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
 		puts("[%3s] | tokyo");
 		printf("[%3s]\n","tokyo");
 		ft_printf("[%3s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		// with '-'
 		puts("with '-'");
 		puts("[%-0s] | tokyo");
 		rc = printf("[%-0s]\n","tokyo");
 		rc2 = ft_printf("[%-0s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%-10s] | tokyo");
 		rc = printf("[%-10s]\n","tokyo");
 		rc2 = ft_printf("[%-10s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
 		puts("[%-5s] | tokyo");
 		rc = printf("[%-5s]\n","tokyo");
 		rc2 = ft_printf("[%-5s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%-3s] | tokyo");
 		rc= printf("[%-3s]\n","tokyo");
 		rc2 = ft_printf("[%-3s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		// with 0
 		puts("with '0'");
 		puts("[%00s] | tokyo");
 		rc = printf("[%00s]\n","tokyo");
 		rc2 = ft_printf("[%00s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%010s] | tokyo");
 		rc = printf("[%010s]\n","tokyo");
 		rc2 = ft_printf("[%010s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%05s] | tokyo");
 		rc=printf("[%05s]\n","tokyo");
 		rc2=ft_printf("[%05s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%03s] | tokyo");
 		rc=printf("[%03s]\n","tokyo");
 		rc2=ft_printf("[%03s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		//with '.'
 		puts("with '.'");
 		puts("[%.0s] | tokyo");
 		rc=printf("[%.0s]\n","tokyo");
 		rc2=ft_printf("[%.0s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%.10s] | tokyo");
 		rc=printf("[%.10s]\n","tokyo");
 		rc2=ft_printf("[%.10s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%.5s] | tokyo");
 		rc=printf("[%.5s]\n","tokyo");
 		rc2=ft_printf("[%.5s]\n", "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%.3s] | tokyo");
 		rc=printf("[%.3s]\n","tokyo");
-		rc2ft_printf("[%.3s]\n", "tokyo");
-		printf("\n");
+		rc2=ft_printf("[%.3s]\n", "tokyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		// Advanced flags Management
 		puts("-----Advanced flags Management-----");
 		puts("[%*s], 0 | tokyo");
 		rc=printf("[%*s]\n", 0, "tokyo");
 		rc2=ft_printf("[%*s]\n",0,  "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%*s], 10 | tokyo");
 		rc=printf("[%*s]\n", 10, "tokyo");
 		rc2=ft_printf("[%*s]\n",  10, "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%*s], -3 | tokyo");
 		rc=printf("[%*s]\n", -3, "tokyo");
 		rc2=ft_printf("[%*s]\n",  -3, "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%*s], 3 | tokyo");
 		rc=printf("[%*s]\n", 3, "tokyo");
 		rc2=ft_printf("[%*s]\n",  3, "tokyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		// precision
 		puts("[%.*s], 0 | tokyo");
 		rc=printf("[%.*s]\n", 0, "tokyo");
 		rc2=ft_printf("[%.*s]\n",0,  "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%.*s], 10 | tokyo");
 		rc=printf("[%.*s]\n", 10, "tokyo");
-		rc2ft_printf("[%.*s]\n",  10, "tokyo");
-		printf("\n");
+		rc2=ft_printf("[%.*s]\n",  10, "tokyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%.*s], -3 | tokyo");
 		rc=printf("[%.*s]\n", -3, "tokyo");
-		rc2ft_printf("[%.*s]\n",  -3, "tokyo");
-		printf("\n");
+		rc2=ft_printf("[%.*s]\n",  -3, "tokyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%.*s], 3 | tokyo");
 		rc=printf("[%.*s]\n", 3, "tokyo");
 		rc2=ft_printf("[%.*s]\n",  3, "tokyo");
-		printf("\n");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
+		// printf("[%3.3.4d]\n", 3);
+		puts("[%3.3.4d] | 3");
+		rc=printf("[%3.3.4d]\n", 3);
+		rc2=ft_printf("[%3.3.4d]\n",  3);
+		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		// Crazy Case
 		puts("-----Crazy Case-----");
 		printf("%%%%zzd%, 100\n");
@@ -5311,5 +5314,10 @@ int main(int argc, char *argv[])
 		ft_printf("\n");
 		ft_printf("%d\n", rc2);
 		//
+	}
+	else
+	{
+		puts("No Conversion specifier");
+	}
 	return (0);
 }
