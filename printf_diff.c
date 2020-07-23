@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	int n = 0;
 	if (argc != 2)
 	{
-		puts("NO!!!!");
+		puts("NO!!!!!");
 		return (0);
 	}
 	arg = argv[1][0];
