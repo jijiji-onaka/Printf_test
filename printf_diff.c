@@ -1,6 +1,6 @@
 # include <stdio.h>
 # include <string.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 int main(int argc, char *argv[])
 {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 	int n = 0;
 	if (argc != 2)
 	{
-		puts("NO!!!!!");
+		puts("NO!!!!");
 		return (0);
 	}
 	arg = argv[1][0];
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 		puts("-----Simple Conversion Management-----");
 		puts("%d %i %u %s %c %x %X %p | 42, 42, 42, Tokyo, 'b', 42, 42, TOkyo");
 		rc = printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
-		rc2 = ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
+		rc = ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
 
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
 		puts("%d %i %u %s %c %d | 42, 42, 42, Tokyo, 'b'");
