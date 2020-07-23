@@ -1,6 +1,6 @@
 # include <stdio.h>
 # include <string.h>
-#include "ft_printf.h"
+#include "../ft_printf.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,9 +20,9 @@ int main(int argc, char *argv[])
 		puts("-----Simple Conversion Management-----");
 		puts("%d %i %u %s %c %x %X %p | 42, 42, 42, Tokyo, 'b', 42, 42, TOkyo");
 		rc = printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
-		rc = ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
-
+		rc2 = ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("%d %i %u %s %c %d | 42, 42, 42, Tokyo, 'b'");
 		rc = printf("%d %i %u %s %c %d\n", 42, 42, 42, "Tokyo", 'b');
 		rc2 = ft_printf("%d %i %u %s %c %d\n", 42, 42, 42, "Tokyo", 'b');
@@ -32,6 +32,7 @@ int main(int argc, char *argv[])
 		rc = printf("%d %s [%s]\n", 0, (void *)0, "");
 		rc2 = ft_printf("%d %s [%s]\n", 0, (void *)0, "");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("check = %d %i %u %s %c %x %X %p = finish |  42, 42, 42, Tokyo, 'b', 42, 42, TOkyo");
 		rc = printf("check = %d %i %u %s %c %x %X %p = finish\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
 		rc2 = ft_printf("check = %d %i %u %s %c %x %X %p = finish\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
@@ -43,6 +44,7 @@ int main(int argc, char *argv[])
 		rc = printf("[%0s]\n","tokyo");
 		rc2 = ft_printf("[%0s]\n", "tokyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%10s] | tokyo");
 		rc = printf("[%10s]\n","tokyo");
 		rc2 = ft_printf("[%10s]\n", "tokyo");
@@ -52,6 +54,7 @@ int main(int argc, char *argv[])
 		rc = printf("[%5s]\n","tokyo");
 		rc2 = ft_printf("[%5s]\n", "tokyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%3s] | tokyo");
 		printf("[%3s]\n","tokyo");
 		ft_printf("[%3s]\n", "tokyo");
@@ -68,6 +71,7 @@ int main(int argc, char *argv[])
 		rc = printf("[%-10s]\n","tokyo");
 		rc2 = ft_printf("[%-10s]\n", "tokyo");
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
+		printf("\n");
 		puts("[%-5s] | tokyo");
 		rc = printf("[%-5s]\n","tokyo");
 		rc2 = ft_printf("[%-5s]\n", "tokyo");
@@ -5334,35 +5338,11 @@ int main(int argc, char *argv[])
 	}
 	else if (arg == 'n')
 	{
-    printf("pft%*.*ntest%d\n", 5, 5, &n, 12);
-    printf("[%d]\n",n);
-    ft_printf("pft%*.*ntest%d", 5, 5, &n, 12);
-    printf("[%d]\n",n);
-    printf("\n");
-
-    printf("hntest:%hn%d\n", &n, 7);
-    printf("[%d]\n",n);
-    ft_printf("hntest:%hn%d", &n, 7);
-    printf("[%d]\n",n);
-    printf("\n");
-
-    printf("hhntest:%hhn%d\n", &n, 8);
-    printf("[%d]\n",n);
-    ft_printf("hhntest:%hhn%d\n", &n, 8);
-    printf("[%d]\n",n);
-    printf("\n");
-
-    printf("lntest:%ln%d\n", &n, 7);
-    printf("[%d]\n",n);
-    ft_printf("lntest:%ln%d\n", &n, 7);
-    printf("[%d]\n",n);
-    printf("\n");
-
-    printf("llntest:%lln%d\n", &n, 8);
-    printf("[%d]\n",n);
-    ft_printf("llntest:%lln%d\n", &n, 8);
-    printf("[%d]\n",n);
-    printf("\n");
+		printf("pft%*.*ntest%d\n", 5, 5, &n, 12);
+		printf("[%d]\n",n);
+		ft_printf("pft%*.*ntest%d", 5, 5, &n, 12);
+		printf("[%d]\n",n);
+		printf("\n");
 	}
 	else
 	{
