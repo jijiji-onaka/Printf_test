@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
 	char arg;
 
 	int rc = 0, rc2 = 0;
+	int n = 0;
 	if (argc != 2)
 	{
 		puts("NO!!!!");
@@ -5330,6 +5331,38 @@ int main(int argc, char *argv[])
 		ft_printf("\n");
 		ft_printf("%d\n", rc2);
 		//
+	}
+	else if (arg == 'n')
+	{
+    printf("pft%*.*ntest%d\n", 5, 5, &n, 12);
+    printf("[%d]\n",n);
+    ft_printf("pft%*.*ntest%d", 5, 5, &n, 12);
+    printf("[%d]\n",n);
+    printf("\n");
+
+    printf("hntest:%hn%d\n", &n, 7);
+    printf("[%d]\n",n);
+    ft_printf("hntest:%hn%d", &n, 7);
+    printf("[%d]\n",n);
+    printf("\n");
+
+    printf("hhntest:%hhn%d\n", &n, 8);
+    printf("[%d]\n",n);
+    ft_printf("hhntest:%hhn%d\n", &n, 8);
+    printf("[%d]\n",n);
+    printf("\n");
+
+    printf("lntest:%ln%d\n", &n, 7);
+    printf("[%d]\n",n);
+    ft_printf("lntest:%ln%d\n", &n, 7);
+    printf("[%d]\n",n);
+    printf("\n");
+
+    printf("llntest:%lln%d\n", &n, 8);
+    printf("[%d]\n",n);
+    ft_printf("llntest:%lln%d\n", &n, 8);
+    printf("[%d]\n",n);
+    printf("\n");
 	}
 	else
 	{
