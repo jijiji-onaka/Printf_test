@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 		puts("-----Simple Conversion Management-----");
 		puts("%d %i %u %s %c %x %X %p | 42, 42, 42, Tokyo, 'b', 42, 42, TOkyo");
 		rc = printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
-		rc = ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
+		rc2 = ft_printf("%d %i %u %s %c %x %X %p\n", 42, 42, 42, "Tokyo", 'b', 42, 42, "TOkyo");
 
 		printf("printf = %d\nft_printf = %d\n", rc, rc2);
 		puts("%d %i %u %s %c %d | 42, 42, 42, Tokyo, 'b'");
